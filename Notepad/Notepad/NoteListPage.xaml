@@ -2,14 +2,21 @@
 <ContentPage
     x:Class="Notepad.NoteListPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Vos notes">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Clicked="ToolbarItem_Clicked" Text="Créer" />
+        <ToolbarItem Clicked="ToolbarItem_Clicked" Text="Créer">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="FA-R" Color="{StaticResource TextColor}" Glyph="&#xf0fe;"/>
+            </ToolbarItem.IconImageSource>
+            
+        </ToolbarItem>
     </ContentPage.ToolbarItems>
-
-    <StackLayout Padding="12">
+    
+    <StackLayout>
         <ListView
+            SeparatorColor="{StaticResource PrimaryColor}"
             x:Name="noteList"
             ItemTapped="noteList_ItemTapped"
             SelectionMode="None" />

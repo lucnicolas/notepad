@@ -20,9 +20,7 @@ namespace Notepad
             string directory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             string filePath = Path.Combine(directory, $"{noteName}.txt");
             if (File.Exists(filePath))
-            {
                 noteEditor.Text = File.ReadAllText(filePath);
-            }
         }
 
         private async void SaveButton_Clicked(object sender, EventArgs e)
@@ -53,7 +51,7 @@ namespace Notepad
             string directory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             string filePath = Path.Combine(directory, $"{noteName}.txt");
             File.Delete(filePath);
-            
+
             // Retour à la liste
             await Navigation.PopAsync();
         }

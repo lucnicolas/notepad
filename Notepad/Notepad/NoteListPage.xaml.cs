@@ -12,11 +12,13 @@ namespace Notepad
         public NoteListPage()
         {
             InitializeComponent();
+           
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
             string directory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             string[] files = Directory.GetFiles(directory, "*.txt");
 

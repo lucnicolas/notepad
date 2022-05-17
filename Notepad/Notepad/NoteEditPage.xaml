@@ -4,44 +4,27 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    <Grid
-        Padding="12"
-        ColumnSpacing="40"
-        RowSpacing="16">
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="SaveButton_Clicked" Text="Sauvegarder">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource
+                    FontFamily="FA-R"
+                    Glyph="&#xf058;"
+                    Color="{StaticResource TextColor}" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem
+            Clicked="DeleteButton_Clicked"
+            Order="Secondary"
+            Text="Supprimer" />
+    </ContentPage.ToolbarItems>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
 
+    <StackLayout>
         <Editor
             x:Name="noteEditor"
-            Grid.Row="0"
-            Grid.Column="0"
-            Grid.ColumnSpan="2"
-            Placeholder="Entrez votre note" />
-
-        <Button
-            Grid.Row="1"
-            Grid.Column="0"
-            BackgroundColor="IndianRed"
-            Clicked="DeleteButton_Clicked"
-            CornerRadius="20"
-            Text="Supprimer"
-            TextColor="White" />
-        <Button
-            Grid.Row="1"
-            Grid.Column="1"
-            BackgroundColor="CornflowerBlue"
-            Clicked="SaveButton_Clicked"
-            CornerRadius="20"
-            Text="Sauvegarder"
-            TextColor="White" />
-
-    </Grid>
+            Placeholder="Entrez votre note"
+            VerticalOptions="FillAndExpand" />
+    </StackLayout>
 </ContentPage>
