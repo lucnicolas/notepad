@@ -40,12 +40,13 @@ namespace Notepad.ViewModels
 
         public async Task OpenAsync(int id)
         {
-            await navigationService.PushAsync("NoteEditView", id);
+            await navigationService.PushAsync("NoteEditView");
+            messagingService.Send(LoadNote, id);
         }
 
         public async Task AddAsync()
         {
-            string noteName = await Application.Current.MainPage.DisplayPromptAsync("Nouvelle note", "Nom pour la note :");
+            string noteName = await displayService.PromptAsync("Nouvelle note", "Nom pour la note :");
             if (string.IsNullOrEmpty(noteName))
                 return;
 
@@ -54,7 +55,8 @@ namespace Notepad.ViewModels
             model = await noteService.Create(model);
 
             // Afficher la note créée
-            await OpenAsync(model.Id);
+            await navigationService.PushAsync("NoteEditView");
+            messagingService.Send(LoadNote, model.Id);
         }
     }
 }

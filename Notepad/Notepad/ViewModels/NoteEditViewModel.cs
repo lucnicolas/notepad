@@ -23,11 +23,14 @@ namespace Notepad.ViewModels
         {
             SaveCommand = new Command(async () => await SaveAsync());
             DeleteCommand = new Command(async () => await DeleteAsync());
+            
+            messagingService.Subscribe<int>(this, LoadNote, async (id) => await LoadAsync(id));
         }
 
         public async Task LoadAsync(int id)
         {
             Model = await noteService.Read(id);
+            messagingService.Unsubscribe<int>(this, LoadNote);
         }
 
         public async Task SaveAsync()
@@ -39,7 +42,7 @@ namespace Notepad.ViewModels
         public async Task DeleteAsync()
         {
             // Confirmation
-            bool deleteFile = await displayService.Alert("Suppression", "Voulez-vous vraiment supprimer cette note", "Oui", "Non");
+            bool deleteFile = await displayService.AlertAsync("Suppression", "Voulez-vous vraiment supprimer cette note", "Oui", "Non");
             if (!deleteFile)
                 return;
 

@@ -5,11 +5,9 @@ namespace Notepad.Views
 {
     public partial class NoteEditView : ContentPage
     {
-        public NoteEditView(int id)
+        public NoteEditView()
         {
             InitializeComponent();
-
-            (BindingContext as NoteEditViewModel).LoadAsync(id);
         }
     }
 }
