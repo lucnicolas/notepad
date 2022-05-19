@@ -3,10 +3,16 @@
     x:Class="Notepad.Views.NoteListView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:Notepad.ViewModels;assembly=Notepad"
     Title="Vos notes">
 
+    <ContentPage.BindingContext>
+        <viewModels:NoteListViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Clicked="ToolbarItem_Clicked" Text="Créer">
+        <ToolbarItem 
+            Command="{Binding AddCommand}"
+            Text="Créer">
             <ToolbarItem.IconImageSource>
                 <FontImageSource
                     FontFamily="FA-R"
@@ -16,14 +22,11 @@
 
         </ToolbarItem>
     </ContentPage.ToolbarItems>
-
-
-
+    
     <StackLayout>
         <ListView
-            x:Name="noteList"
-            ItemTapped="noteList_ItemTapped"
-            SelectionMode="None"
+            ItemsSource="{Binding Items}"
+            SelectedItem="{Binding Selected}"
             SeparatorColor="{StaticResource PrimaryColor}">
             <ListView.ItemTemplate>
                 <DataTemplate>

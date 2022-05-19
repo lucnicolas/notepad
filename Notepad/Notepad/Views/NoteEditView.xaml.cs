@@ -1,5 +1,4 @@
-﻿using System;
-using Notepad.ViewModels;
+﻿using Notepad.ViewModels;
 using Xamarin.Forms;
 
 namespace Notepad.Views

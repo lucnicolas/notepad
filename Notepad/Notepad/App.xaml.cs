@@ -1,4 +1,5 @@
-﻿using Notepad.Views;
+﻿using Notepad.Services;
+using Notepad.Views;
 using Xamarin.Forms;
 
 namespace Notepad
@@ -8,6 +9,9 @@ namespace Notepad
         public App()
         {
             InitializeComponent();
+            
+            // Ajout des views
+            NavigationService.SetView(nameof(NoteEditView), typeof(NoteEditView));
 
             MainPage = new NavigationPage(new NoteListView());
         }
