@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using Notepad.Views;
+using Xamarin.Forms;
 
 namespace Notepad
 {
@@ -8,7 +9,7 @@ namespace Notepad
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new NoteListPage());
+            MainPage = new NavigationPage(new NoteListView());
         }
 
         protected override void OnStart()
