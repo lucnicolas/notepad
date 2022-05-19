@@ -47,6 +47,7 @@ namespace Notepad.ViewModels
                 return;
 
             await noteService.Delete(Model.Id);
+            messagingService.Send(NoteDeleted, Model);
             await navigationService.PopAsync();
         }
     }

@@ -9,7 +9,7 @@ namespace Notepad.Services
 {
     // Repository -> implémente les opérations CRUD sur le model
     // Nom du fichier: id-nom.txt
-    public class FileNoteService
+    public class FileNoteService : INoteService
     {
         private static readonly string directory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 

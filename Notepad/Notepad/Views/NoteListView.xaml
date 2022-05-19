@@ -25,9 +25,12 @@
     
     <StackLayout>
         <ListView
+            IsPullToRefreshEnabled="True"
             ItemsSource="{Binding Items}"
             SelectedItem="{Binding Selected}"
-            SeparatorColor="{StaticResource PrimaryColor}">
+            SeparatorColor="{StaticResource PrimaryColor}"
+            RefreshCommand="{Binding Selected}"
+            IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Detail="{Binding Id}" Text="{Binding Name}" />

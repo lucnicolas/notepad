@@ -10,5 +10,15 @@
         //{
         //    return $"{Id} - {Name}";
         //}
+
+        protected bool Equals(NoteModel note)
+        {
+            return Id == note.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return Id;
+        }
     }
 }

@@ -10,11 +10,5 @@ namespace Notepad.Views
         {
             InitializeComponent();
         }
-
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-            await ((NoteListViewModel) BindingContext).RefreshAsync();
-        }
     }
 }
