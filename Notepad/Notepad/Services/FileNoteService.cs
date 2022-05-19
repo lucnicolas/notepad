@@ -13,17 +13,11 @@ namespace Notepad.Services
     {
         private static readonly string directory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
-        private static int id =
-            Directory.GetFiles(directory, "*.txt")
-               .Select(x => Path.GetFileNameWithoutExtension(x))
-               .Select(x => x.Substring(0, x.IndexOf("-")))
-               .Max(x => int.Parse(x)) + 1;
+        private static int id = 1;
 
-
-        public FileNoteService()
+        static FileNoteService()
         {
             // Routine pour convertir le nom des fichiers
-            int id = 1;
             foreach (var item in Directory.GetFiles(directory, "*.txt"))
             {
                 string filename = Path.GetFileNameWithoutExtension(item);
@@ -33,6 +27,11 @@ namespace Notepad.Services
                 File.Move(item, Path.Combine(directory, $"{id}-{filename}.txt"));
                 id++;
             }
+            id =
+                Directory.GetFiles(directory, "*.txt")
+                    .Select(x => Path.GetFileNameWithoutExtension(x))
+                    .Select(x => x.Substring(0, x.IndexOf("-")))
+                    .Max(x => int.Parse(x)) + 1;
         }
 
         public async Task<IEnumerable<NoteModel>> Read()
