@@ -6,6 +6,7 @@ namespace Notepad.Services
     public class MessagingService
     {
         private static readonly object sender = new object();
+
         public void Send<T>(string message, T parameter)
         {
             MessagingCenter.Send(sender, message, parameter);

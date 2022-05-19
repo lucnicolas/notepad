@@ -1,7 +1,7 @@
 ﻿using System;
+using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Notepad.Models;
-using Path = System.IO.Path;
 
 namespace Notepad.Data
 {
@@ -12,7 +12,7 @@ namespace Notepad.Data
         public DbSet<NoteModel> Notes { get; set; }
 
         public DataContext()
-            :base()
+            : base()
         {
             Database.EnsureCreated();
         }
@@ -20,7 +20,7 @@ namespace Notepad.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string filePath = Path.Combine(directory, "Notepad.db3");
-            optionsBuilder.UseSqlite($"filename={filePath}");
+            optionsBuilder.UseSqlite($"Filename={filePath}");
         }
     }
 }

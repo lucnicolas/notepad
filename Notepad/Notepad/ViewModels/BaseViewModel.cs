@@ -9,11 +9,11 @@ namespace Notepad.ViewModels
         protected const string LoadNote = "LoadNote";
         protected const string NoteUpdated = "NoteUpdated";
         protected const string NoteDeleted = "NoteDeleted";
-        
+
         protected static readonly INoteService noteService = new SqlNoteService();
         protected static readonly DisplayService displayService = new DisplayService();
-        protected static readonly NavigationService navigationService = new NavigationService();
         protected static readonly MessagingService messagingService = new MessagingService();
+        protected static readonly NavigationService navigationService = new NavigationService();
 
         public event PropertyChangedEventHandler PropertyChanged;
 

@@ -9,9 +9,9 @@ namespace Notepad
         public App()
         {
             InitializeComponent();
-            
-            // Ajout des views
-            NavigationService.SetView(nameof(NoteEditView), typeof(NoteEditView));
+
+            // Ajout des vues
+            NavigationService.AddView(nameof(NoteEditView), typeof(NoteEditView));
 
             MainPage = new NavigationPage(new NoteListView());
         }

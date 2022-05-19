@@ -1,8 +1,12 @@
-﻿namespace Notepad.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Notepad.Models
 {
     public class NoteModel
     {
         public int Id { get; set; }
+        
+        //[Required]
         public string Name { get; set; }
         public string Content { get; set; }
 
@@ -11,9 +15,9 @@
         //    return $"{Id} - {Name}";
         //}
 
-        protected bool Equals(NoteModel note)
+        public override bool Equals(object obj)
         {
-            return Id == note.Id;
+            return base.Equals(obj) || (obj is NoteModel note && note.Id == Id);
         }
 
         public override int GetHashCode()

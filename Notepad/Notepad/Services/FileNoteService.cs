@@ -27,10 +27,13 @@ namespace Notepad.Services
                 File.Move(item, Path.Combine(directory, $"{id}-{filename}.txt"));
                 id++;
             }
-            id = Directory.GetFiles(directory, "*.txt")
-                    .Select(x => Path.GetFileNameWithoutExtension(x))
-                    .Select(x => x.Substring(0, x.IndexOf("-")))
-                    .Max(x => int.Parse(x)) + 1;
+
+            // Recherche de l'id max
+            id =
+            Directory.GetFiles(directory, "*.txt")
+               .Select(x => Path.GetFileNameWithoutExtension(x))
+               .Select(x => x.Substring(0, x.IndexOf("-")))
+               .Max(x => int.Parse(x)) + 1;
         }
 
         public async Task<IEnumerable<NoteModel>> Read()

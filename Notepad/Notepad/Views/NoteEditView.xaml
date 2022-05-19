@@ -20,14 +20,13 @@
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
         <ToolbarItem
-            Command="{Binding DeleteCommand}"
             Order="Secondary"
-            Text="Supprimer" />
+            Text="Supprimer"
+            Command="{Binding DeleteCommand}" />
     </ContentPage.ToolbarItems>
 
     <StackLayout>
         <Editor
-            x:Name="noteEditor"
             Placeholder="Entrez votre note"
             Text="{Binding Model.Content, Mode=TwoWay}"
             VerticalOptions="FillAndExpand" />

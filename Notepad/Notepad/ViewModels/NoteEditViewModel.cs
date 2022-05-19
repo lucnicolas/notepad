@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
 using Notepad.Models;
-using Notepad.Services;
 using Xamarin.Forms;
 
 namespace Notepad.ViewModels
@@ -23,19 +22,20 @@ namespace Notepad.ViewModels
         {
             SaveCommand = new Command(async () => await SaveAsync());
             DeleteCommand = new Command(async () => await DeleteAsync());
-            
+
             messagingService.Subscribe<int>(this, LoadNote, async (id) => await LoadAsync(id));
         }
 
         public async Task LoadAsync(int id)
         {
-            Model = await noteService.Read(id);
             messagingService.Unsubscribe<int>(this, LoadNote);
+            Model = await noteService.Read(id);
         }
 
         public async Task SaveAsync()
         {
             await noteService.Update(Model.Id, Model);
+            messagingService.Send(NoteUpdated, Model);
             await navigationService.PopAsync();
         }
 

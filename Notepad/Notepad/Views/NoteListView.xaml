@@ -3,34 +3,33 @@
     x:Class="Notepad.Views.NoteListView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:viewModels="clr-namespace:Notepad.ViewModels;assembly=Notepad"
+    xmlns:viewmodels="clr-namespace:Notepad.ViewModels"
     Title="Vos notes">
 
     <ContentPage.BindingContext>
-        <viewModels:NoteListViewModel/>
+        <viewmodels:NoteListViewModel />
     </ContentPage.BindingContext>
+
     <ContentPage.ToolbarItems>
-        <ToolbarItem 
-            Command="{Binding AddCommand}"
-            Text="Créer">
+        <ToolbarItem Text="Créer" Command="{Binding CreateCommand}">
             <ToolbarItem.IconImageSource>
                 <FontImageSource
                     FontFamily="FA-R"
                     Glyph="&#xf0fe;"
                     Color="{StaticResource TextColor}" />
             </ToolbarItem.IconImageSource>
-
         </ToolbarItem>
     </ContentPage.ToolbarItems>
-    
+
     <StackLayout>
         <ListView
             IsPullToRefreshEnabled="True"
+            IsRefreshing="{Binding IsRefreshing}"
             ItemsSource="{Binding Items}"
-            SelectedItem="{Binding Selected}"
-            SeparatorColor="{StaticResource PrimaryColor}"
-            RefreshCommand="{Binding Selected}"
-            IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}">
+            RefreshCommand="{Binding RefreshCommand}"
+            SelectedItem="{Binding Selected, Mode=TwoWay}"
+            SeparatorColor="{StaticResource PrimaryColor}">
+
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Detail="{Binding Id}" Text="{Binding Name}" />
@@ -38,6 +37,4 @@
             </ListView.ItemTemplate>
         </ListView>
     </StackLayout>
-
-
 </ContentPage>

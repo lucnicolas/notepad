@@ -5,4 +5,4 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("Major Bug", "S3263:Static fields should appear in the order they must be initialized ", Justification = "<En attente>", Scope = "member", Target = "~F:Notepad.Services.FileNoteService.id")]
+[assembly: SuppressMessage("Minor Code Smell", "S3963:\"static\" fields should be initialized inline", Justification = "<En attente>", Scope = "member", Target = "~M:Notepad.Services.FileNoteService.#cctor")]
