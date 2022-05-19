@@ -7,6 +7,7 @@ namespace Notepad.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         protected static readonly FileNoteService noteService = new FileNoteService();
+        protected static readonly DisplayService displayService = new DisplayService();
         protected static readonly NavigationService navigationService = new NavigationService();
 
         public event PropertyChangedEventHandler PropertyChanged;

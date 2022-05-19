@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
 using Notepad.Models;
+using Notepad.Services;
 using Xamarin.Forms;
 
 namespace Notepad.ViewModels
@@ -37,7 +38,13 @@ namespace Notepad.ViewModels
 
         public async Task DeleteAsync()
         {
+            // Confirmation
+            bool deleteFile = await displayService.Alert("Suppression", "Voulez-vous vraiment supprimer cette note", "Oui", "Non");
+            if (!deleteFile)
+                return;
+
             await noteService.Delete(Model.Id);
+            await navigationService.PopAsync();
         }
     }
 }

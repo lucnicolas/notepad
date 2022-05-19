@@ -20,7 +20,7 @@
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
         <ToolbarItem
-            Clicked="DeleteButton_Clicked"
+            Command="{Binding DeleteCommand}"
             Order="Secondary"
             Text="Supprimer" />
     </ContentPage.ToolbarItems>
